@@ -26,13 +26,14 @@ public class StudyCafePass {
         return duration;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public double getDiscountRate() {
-        return discountRate;
-    }
+//
+//    public int getPrice() {
+//        return price;
+//    }
+//
+//    public double getDiscountRate() {
+//        return discountRate;
+//    }
 
     public String display() {
         return passType.formatDisplay(duration, price);
