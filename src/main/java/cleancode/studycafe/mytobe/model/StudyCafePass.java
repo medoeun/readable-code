@@ -37,4 +37,13 @@ public class StudyCafePass {
     public String display() {
         return passType.formatDisplay(duration, price);
     }
+
+    public int calculateDiscountPrice() {
+        return (int) (price * discountRate);
+    }
+
+    public int calculateFinalPriceWithLocker(StudyCafeLockerPass lockerPass) {
+        int lockerPrice = lockerPass != null ? lockerPass.getPrice() : 0;
+        return price - calculateDiscountPrice() + lockerPrice;
+    }
 }
