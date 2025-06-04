@@ -16,9 +16,9 @@ public enum StudyCafePassType {
         this.format = format;
     }
 
-    public String getDescription() {
-        return description;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
 
     public String formatDisplay(int duration, int price) {
         return String.format(format, duration, price);
