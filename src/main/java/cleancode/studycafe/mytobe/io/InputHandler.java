@@ -5,25 +5,24 @@ import cleancode.studycafe.mytobe.model.StudyCafePass;
 import cleancode.studycafe.mytobe.model.StudyCafePassType;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class InputHandler {
 
+    private static final Map<String, StudyCafePassType> passTypeMap = Map.of(
+            "1", StudyCafePassType.HOURLY,
+            "2", StudyCafePassType.WEEKLY,
+            "3", StudyCafePassType.FIXED
+    );
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public StudyCafePassType getPassTypeSelectingUserAction() {
         String userInput = SCANNER.nextLine();
-
-        if ("1".equals(userInput)) {
-            return StudyCafePassType.HOURLY;
+        if (!passTypeMap.containsKey(userInput)) {
+            throw new AppException("잘못된 입력입니다.");
         }
-        if ("2".equals(userInput)) {
-            return StudyCafePassType.WEEKLY;
-        }
-        if ("3".equals(userInput)) {
-            return StudyCafePassType.FIXED;
-        }
-        throw new AppException("잘못된 입력입니다.");
+        return passTypeMap.get(userInput);
     }
 
     public StudyCafePass getSelectPass(List<StudyCafePass> passes) {
